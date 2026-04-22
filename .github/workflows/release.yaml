@@ -1,0 +1,46 @@
+name: Quick Journal Page Sort
+
+permissions:
+  contents: write  # Add this
+on:
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to use for release'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Zip output
+        run: |
+          mkdir quick-scene-tiler
+          mkdir quick-scene-tiler/scripts
+          mkdir quick-scene-tiler/styles
+          mkdir quick-scene-tiler/lang
+          cp module.json ./quick-scene-tiler/
+          cp ./styles/*.* ./quick-scene-tiler/styles/
+          cp ./scripts/*.js ./quick-scene-tiler/scripts/
+          cp ./lang/*.json ./quick-scene-tiler/lang/
+          zip -r quick-scene-tiler.zip quick-scene-tiler
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Handle both trigger types, github.event.inputs.tag is for getting the tag manual. If not found the automatic tag retrieval is used.
+          # input events are only available for manual events aka workflow_dispatch events.
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          
+          gh release create "$tag" \
+            --title="Release $tag" \
+            --draft \
+            module.json quick-scene-tiler.zip

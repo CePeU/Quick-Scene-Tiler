@@ -1,0 +1,48 @@
+{
+  "id": "quick-scene-tiler",
+  "title": "Quick Scene Tiler",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "13",
+    "maximum": "14"
+  },
+    "authors": [
+    {
+      "name": "CePeU",
+      "discord": "CePeU",
+      "flags": {}
+    }
+  ],
+  "esmodules": ["scripts/quick-scene-tiler.js"],
+  "styles": [
+    "styles/quick-scene-tiler.css"
+  ],
+    "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    }
+  ],
+  "description": "<p>A little module to cut a Foundry VTT scene into tiles and replace the scene map with those tiles. This allows even older tabletts to view high resolution maps which would otherwise be inaccessible due to the fact that they will exceed the texture size of the tablett.</p>",
+  "flags": {
+    "canUpload": true
+  },
+  "url": "https://github.com/CePeU/Quick-Scene-Tiler",
+"manifest": "https://github.com/CePeU/Quick-Scene-Tiler/releases/latest/download/module.json",
+"download": "https://github.com/CePeU/Quick-Scene-Tiler/releases/latest/download/quick-scene-tiler.zip",
+"readme": "https://github.com/CePeU/Quick-Scene-Tiler/blob/main/README.md",
+"bugs": "https://github.com/CePeU/Quick-Scene-Tiler/issues",
+"changelog": "https://github.com/CePeU/Quick-Scene-Tiler/blob/main/CHANGELOG.md",
+  "relationships": {
+    "requires": {
+      "lib-dfreds-ui-extender": "2.2.0"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+  .quick-scene-tiler-icon {
+    
+  background-image: url(scenetiler.svg);
+
+    /*width: 2em;*/
+    /*height: 2em;*/
+    /*vertical-align: -0.125em;*/
+  }
+     /* Main Window*/
+     .tile-macro-btn-row {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .tile-macro-btn-row button {
+        flex: 1;
+        padding: 0.5rem;
+      }
+/* Export Dialog */
+      .spinner-group {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+        }
+        .spinner-group input[type=number] {
+          flex: 1;
+          text-align: center;
+        }
+        .spinner-group button {
+          width: 2rem;
+          height: 2rem;
+          padding: 0;
+          line-height: 1;
+        }
+        .path-row {
+          display: flex;
+          gap: 0.4rem;
+          align-items: center;
+        }
+        .path-row input { flex: 1; }
+        .lock-toggle button { min-width: 8rem; }
+        .lock-on  { background: #5a0000; color: #fff; }
+        .lock-off { background: #1a3a1a; color: #fff; }
+        .webp-warning {
+          color: #c0392b;
+          font-size: 0.85em;
+          margin-top: 0.2rem;
+        }
+        .format-row {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+        }
+
+.filepicker-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filepicker-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.browse-btn {
+  margin-left: auto;
+  width: 50%;
+}
+
+basepath-row input {
+  width: 100%;
+}
+
+        /* Import Dialog*/
+        .path-row {
+          display: flex;
+          gap: 0.4rem;
+          align-items: center;
+        }
+        .path-row input { flex: 1; }
+        .lock-toggle button { min-width: 8rem; }
+        .lock-on  { background: #5a0000; color: #fff; }
+        .lock-off { background: #1a3a1a; color: #fff; }
+        .spinner-group {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+        }
+        .spinner-group input[type=number] {
+          flex: 1;
+          text-align: center;
+        }
+        .spinner-group button {
+          width: 2rem;
+          height: 2rem;
+          padding: 0;
+          line-height: 1;
+        }
+        .elevation-override-row {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+      
