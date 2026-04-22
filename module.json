@@ -40,9 +40,15 @@
 "readme": "https://github.com/CePeU/Quick-Scene-Tiler/blob/main/README.md",
 "bugs": "https://github.com/CePeU/Quick-Scene-Tiler/issues",
 "changelog": "https://github.com/CePeU/Quick-Scene-Tiler/blob/main/CHANGELOG.md",
-  "relationships": {
-    "requires": {
-      "lib-dfreds-ui-extender": "2.2.0"
+"relationships": {
+  "requires": [
+    {
+      "id": "lib-dfreds-ui-extender",
+      "type": "module",
+      "compatibility": {
+        "verified": "2.2.0"
+      }
     }
-  }
+  ]
+}
 }
