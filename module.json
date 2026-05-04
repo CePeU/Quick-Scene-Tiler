@@ -1,7 +1,7 @@
 {
   "id": "quick-scene-tiler",
   "title": "Quick Scene Tiler",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "compatibility": {
     "minimum": "12",
     "verified": "13",
