@@ -1,17 +1,26 @@
-const MODULE_ID = "quick-scene-tiler";
+import { MODULE_ID } from "./quick-scene-tiler.js";
+//const MODULE_ID = "quick-scene-tiler";
 
 // Helper function for localization
-const i18n = (key, data = {}) => {
+/*const i18n = (key, data = {}) => {
   const localized = game.i18n.localize(key);
   return Object.entries(data).reduce((str, [k, v]) => 
     str.replace(`{${k}}`, v), localized);
-};
+};*/
 
 /**
  * Register all module settings for Quick Scene Tiler
  * Called from Hooks.once("init")
  */
 export function registerModuleSettings() {
+  game.settings.register(MODULE_ID, "symmetricTiling", {
+    name: game.i18n.localize("QUICKSCENETILER.settings.symmetricTiling.name"),
+    hint: game.i18n.localize("QUICKSCENETILER.settings.symmetricTiling.hint"),
+    scope: "world",
+    config: true,
+    type: Boolean,
+    default: true
+  });
   
   // =========================================================================
   // TILE WIDTH SETTING
@@ -67,14 +76,14 @@ export function registerModuleSettings() {
    // =========================================================================
   // EXPORT TILES
   // =========================================================================
-  game.settings.register(MODULE_ID, "defaultExportTiles", {
+  /*game.settings.register(MODULE_ID, "defaultExportTiles", {
     name: game.i18n.localize("QUICKSCENETILER.settings.exportTiles.name"),
     hint: game.i18n.localize("QUICKSCENETILER.settings.exportTiles.hint"),
     scope: "world",
     config: true,
     type: Boolean,
     default: false
-  });
+  });*/
 
   // =========================================================================
   // BASE PATH SETTING
@@ -107,11 +116,12 @@ export function registerModuleSettings() {
  */
 export function getDefaultSettings() {
   return {
-    tileWidth: game.settings.get(MODULE_ID, "defaultTileWidth"),
-    tileHeight: game.settings.get(MODULE_ID, "defaultTileHeight"),
-    elevation: game.settings.get(MODULE_ID, "defaultElevation"),
-    basePath: game.settings.get(MODULE_ID, "defaultBasePath"),
-    lockTiles: game.settings.get(MODULE_ID, "defaultLockTiles")
+    basePath: game.settings.get(MODULE_ID, "defaultBasePath") ?? "assets/scenetiles",
+    tileWidth: game.settings.get(MODULE_ID, "defaultTileWidth") ?? 4096,
+    tileHeight: game.settings.get(MODULE_ID, "defaultTileHeight") ?? 4096,
+    elevation: game.settings.get(MODULE_ID, "defaultElevation") ?? 0,
+    lockTiles: game.settings.get(MODULE_ID, "defaultLockTiles") ?? false,
+    symmetricTiling: game.settings.get(MODULE_ID, "symmetricTiling") ?? true
   };
 }
 

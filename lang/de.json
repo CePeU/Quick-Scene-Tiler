@@ -12,7 +12,7 @@
   "QUICKSCENETILER.export.format.warning": "Dein Browser unterstützt keinen WebP-Export über Canvas. Nur PNG ist verfügbar.",
   "QUICKSCENETILER.export.tileWidth.label": "Tile-Breite (px)",
   "QUICKSCENETILER.export.tileHeight.label": "Tile-Höhe (px)",
-  "QUICKSCENETILER.export.elevation.label": "Z-Ebene der Tiles (elevation)",
+  "QUICKSCENETILER.export.elevation.label": "Z-Ebene der Tiles (Höhe)",
   "QUICKSCENETILER.export.basePath.label": "Basis-Pfad unter",
   "QUICKSCENETILER.export.subfolder.label": "Subfolder (wird ggf. angelegt)",
   "QUICKSCENETILER.export.lock.label": "Tiles sperren (locked)",
@@ -21,12 +21,13 @@
   "QUICKSCENETILER.export.button.start": "Export starten",
   "QUICKSCENETILER.export.button.cancel": "Abbrechen",
   "QUICKSCENETILER.export.button.browse": "Ordner auswählen",
+  "QUICKSCENETILER.export.symmetricTiling.label": "Symetrische Kacheln",
 
   "QUICKSCENETILER.import.title": "Import: Tiles & Walls aus Folder rekonstruieren",
   "QUICKSCENETILER.import.folder.label": "Folder unter",
   "QUICKSCENETILER.import.sceneName.label": "Neuer Szenenname",
   "QUICKSCENETILER.import.sceneName.default": "Rekonstruierte Szene",
-  "QUICKSCENETILER.import.elevation.label": "Z-Ebene (elevation)",
+  "QUICKSCENETILER.import.elevation.label": "Z-Ebene der Tiles (Höhe)",
   "QUICKSCENETILER.import.elevation.fromJson": "Aus JSON übernehmen",
   "QUICKSCENETILER.import.elevation.manual": "Manuell festlegen",
   "QUICKSCENETILER.import.lock.label": "Tiles sperren (überschreibt JSON-Einstellung)",
@@ -88,5 +89,8 @@
   "QUICKSCENETILER.settings.basePath.hint": "Standard Ordnerpfad unter /data für Tile-Speicherung (z.B. assets/scenetiles)",
 
   "QUICKSCENETILER.settings.lockTiles.name": "Tiles standardmäßig sperren",
-  "QUICKSCENETILER.settings.lockTiles.hint": "Sollten Tiles standardmäßig beim Export gesperrt sein?"
+  "QUICKSCENETILER.settings.lockTiles.hint": "Sollten Tiles standardmäßig beim Export gesperrt sein?",
+
+  "QUICKSCENETILER.settings.symmetricTiling.name": "Aktiviere symetrische Kachelerzeugung",
+  "QUICKSCENETILER.settings.symmetricTiling.hint": "Dies erzeugt symetrische Kacheln so dass das Bild aus gleich großen Kacheln zusammengesetzt wird."
 }

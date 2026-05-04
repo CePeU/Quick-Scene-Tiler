@@ -14,64 +14,13 @@
  * - Module settings for default values
  */
 
-const MODULE_ID = "quick-scene-tiler";
+export const MODULE_ID = "quick-scene-tiler";
 
 // Add at the top after imports
 import { registerModuleSettings, getDefaultSettings, getSetting } from "./settings.js";
 
-/**
- * SVG icon for the scene control tool
- * @type {string}
- */
-
-/**
- * Register module settings on module initialization
- * @fires init
- */
-Hooks.once("init", () => {
-  registerModuleSettings();
-});
-
-/**
- * Localizes a string key with optional placeholder replacements
- * @function
- * @param {string} key - The localization key (e.g., "QUICKSCENETILER.export.title")
- * @param {Object} [data={}] - Object containing placeholder values {key: value}
- * @returns {string} Localized string with placeholders replaced
- * @example
- * i18n("QUICKSCENETILER.notification.activating", { sceneName: "MyScene" })
- * // Returns: "New scene activated: MyScene"
- */
-const i18n = (key, data = {}) => {
-  const localized = game.i18n.localize(key);
-  return Object.entries(data).reduce((str, [k, v]) => 
-    str.replace(`{${k}}`, v), localized);
-};
-
-/**
- * Register the scene control tool with Dfreds UI Extender
- * Creates the main UI button and mode selection dialog
- * @fires uiExtender.init
- */
-Hooks.once("uiExtender.init", (uiExtender) => {
-  uiExtender.registerSceneControl({
-    moduleId: MODULE_ID,
-    name: "tiles",
-    tool: {
-      name: game.i18n.localize("QUICKSCENETILER.tool.name"),
-      title: game.i18n.localize("QUICKSCENETILER.tool.title"),
-      icon: "quick-scene-tiler-icon",
-      button: true,
-      order: 99,
-      
-      /**
-       * Called when the tiles tool is activated
-       * Opens the mode selection dialog (Export vs. Import)
-       * @param {Event} event - The activation event
-       * @param {boolean} active - Whether the tool is active
-       */
-      onChange: (event, active) => {
-        console.log("Quick Scene Tiler has been initialized");
+function qscDialog(){
+        console.log("QST: Quick Scene Tiler has been initialized");
         
         const modeDialog = new Dialog({
           title: game.i18n.localize("QUICKSCENETILER.dialog.modeSelect.title"),
@@ -105,9 +54,188 @@ Hooks.once("uiExtender.init", (uiExtender) => {
         });
         
         modeDialog.render(true);
+}
+
+Hooks.once("init", () => {
+  registerModuleSettings();
+});
+
+/**
+ * SVG icon for the scene control tool
+ * @type {string}
+ */
+
+/**
+ * Register module settings on module initialization
+ * @fires init
+ */
+/*
+Hooks.once("init", () => {
+  registerModuleSettings();
+  console.log("QST: registered Module Settings")
+});*/
+/*
+let major = 0;
+Hooks.on("init", function () {
+    //console.log("== This code runs once the Foundry VTT software begins its initialization workflow.");
+    registerModuleSettings();
+    console.log("QST: registered Module Settings")
+    
+    const version = game.version;  // e.g., "12.999"
+    major = parseInt(version.split('.')[0]);  // 12 or 13
+console.log("QST: Version: ",version," and major",major)
+    // sheet and html are passed down to the following functions making sure the html of the respective button is changed
+    if (major <= 12) {
+/*
+ * Register the scene control tool with Dfreds UI Extender
+ * Creates the main UI button and mode selection dialog
+ * @fires uiExtender.init
+ /
+console.log("QST: Branched into v12")
+Hooks.once("uiExtender.init", (uiExtender) => {
+  console.log("QST: Quick Scene Tiler has been initialized for v12");
+  uiExtender.registerSceneControl({
+    moduleId: MODULE_ID,
+    name: "tiles",
+    position: 99,
+    tool: {
+      name: game.i18n.localize("QUICKSCENETILER.tool.name"),
+      title: game.i18n.localize("QUICKSCENETILER.tool.title"),
+      icon: "quick-scene-tiler-icon",
+      button: true,
+      
+      /**
+       * Called when the tiles tool is activated
+       * Opens the mode selection dialog (Export vs. Import)
+       * @param {Event} event - The activation event
+       * @param {boolean} active - Whether the tool is active
+       /
+      onClick: (event, active) => {
+        qscDialog()
       }
     }
   });
+});
+    }
+
+
+});
+
+console.log("QST: Before branch major is: ",major)
+if (major >= 13) {
+      console.log("QST: Branched into v13")
+/**
+ * Register the scene control tool with Dfreds UI Extender
+ * Creates the main UI button and mode selection dialog
+ * @fires uiExtender.init
+ /
+Hooks.once("uiExtender.init", (uiExtender) => {
+  console.log("QST: Quick Scene Tiler has been initialized for v13");
+  uiExtender.registerSceneControl({
+    moduleId: MODULE_ID,
+    name: "tiles",
+    tool: {
+      name: game.i18n.localize("QUICKSCENETILER.tool.name"),
+      title: game.i18n.localize("QUICKSCENETILER.tool.title"),
+      icon: "quick-scene-tiler-icon",
+      button: true,
+      order: 99,
+      
+      /**
+       * Called when the tiles tool is activated
+       * Opens the mode selection dialog (Export vs. Import)
+       * @param {Event} event - The activation event
+       * @param {boolean} active - Whether the tool is active
+       /
+      onChange: (event, active) => {
+        qscDialog()
+      }
+    }
+  });
+});
+    };
+*/
+/**
+ * Localizes a string key with optional placeholder replacements
+ * @function
+ * @param {string} key - The localization key (e.g., "QUICKSCENETILER.export.title")
+ * @param {Object} [data={}] - Object containing placeholder values {key: value}
+ * @returns {string} Localized string with placeholders replaced
+ * @example
+ * i18n("QUICKSCENETILER.notification.activating", { sceneName: "MyScene" })
+ * // Returns: "New scene activated: MyScene"
+ */
+const i18n = (key, data = {}) => {
+  const localized = game.i18n.localize(key);
+  return Object.entries(data).reduce((str, [k, v]) => 
+    str.replace(`{${k}}`, v), localized);
+};
+
+/**
+ * Register the scene control tool with Dfreds UI Extender
+ * Creates the main UI button and mode selection dialog
+ * @fires uiExtender.init
+ */
+
+Hooks.once("uiExtender.init", (uiExtender) => {
+  console.log("QST: Quick Scene Tiler has been initialized");
+  const version = game.version;  // e.g., "12.999"
+  const major = parseInt(version.split('.')[0]);  // 12 or 13
+  console.log("QST: Version: ",version," and major",major)
+    // sheet and html are passed down to the following functions making sure the html of the respective button is changed
+    if (major <= 12) {
+    console.log("QST: Initialized for 12 minor: ",version)
+    uiExtender.registerSceneControl({
+    moduleId: MODULE_ID,
+    name: "tiles",
+    position: 99,
+    tool: {
+      name: game.i18n.localize("QUICKSCENETILER.tool.name"),
+      title: game.i18n.localize("QUICKSCENETILER.tool.title"),
+      icon:  "quick-scene-tiler-icon",   //"fas fa-th", //"quick-scene-tiler-icon",
+      button: true,
+      
+      /**
+       * Called when the tiles tool is activated
+       * Opens the mode selection dialog (Export vs. Import)
+       * @param {Event} event - The activation event
+       * @param {boolean} active - Whether the tool is active
+       */
+      onClick: (event, active) => qscDialog()
+      
+    }
+  });}
+});
+
+Hooks.once("uiExtender.init", (uiExtender) => {
+  console.log("QST: Quick Scene Tiler has been initialized");
+  const version = game.version;  // e.g., "12.999"
+  const major = parseInt(version.split('.')[0]);  // 12 or 13
+  console.log("QST: Version: ",version," and major",major)
+    // sheet and html are passed down to the following functions making sure the html of the respective button is changed
+  if (major >= 13) {
+  console.log("QST: Initialized for v13 minor: ",version)
+  uiExtender.registerSceneControl({
+    moduleId: MODULE_ID,
+    name: "tiles",
+    tool: {
+      name: game.i18n.localize("QUICKSCENETILER.tool.name"),
+      title: game.i18n.localize("QUICKSCENETILER.tool.title"),
+      icon: "quick-scene-tiler-icon",
+      button: true,
+      order: 99,
+      
+      /**
+       * Called when the tiles tool is activated
+       * Opens the mode selection dialog (Export vs. Import)
+       * @param {Event} event - The activation event
+       * @param {boolean} active - Whether the tool is active
+       */
+      onChange: (event, active) => {
+        qscDialog()
+      }
+    }
+  });}
 });
 
 
@@ -122,6 +250,45 @@ function browserSupportsWebPExport() {
   } catch (e) {
     return false;
   }
+}
+
+/**
+ * Compute minimum tile size along one axis given:
+ * - imgSize: image length in pixels
+ * - maxTileSize: maximum allowed tile size in pixels
+ * Returns the smallest tile size that:
+ *   - is ≤ maxTileSize
+ *   - covers the image with minTiles tiles (all same size, rounded up to integer)
+ */
+function computeTileAxisDim(imgSize, maxTileSize) {
+  imgSize = Math.max(1, Math.floor(imgSize));
+  maxTileSize = Math.max(1, Math.floor(maxTileSize));
+
+  // If max tile is already big enough to cover the whole axis in one tile
+  if (imgSize <= maxTileSize) {
+    return imgSize; // one tile fits exactly
+  }
+
+  // Step 1: minimum number of tiles needed
+  const minTiles = Math.ceil(imgSize / maxTileSize);
+
+  // Step 2: modulo remainder (pixels that don’t fit in full tiles)
+  const remainder = imgSize % minTiles;
+
+  // Step 3: base = throw away the remainder, then divide evenly
+  const base = (imgSize - remainder) / minTiles;
+
+  // Step 4: add 1 to get the smallest tile size that still fits
+  // in minTiles, and always rounds up to integer size
+  let tileSize = Math.floor(base + 1);
+
+  // Enforce: we must still be ≥ the minimal size needed to cover
+  tileSize = Math.max(tileSize, Math.ceil(imgSize / minTiles));
+
+  // Finally, clamp to maxTileSize; if impossible, we simply use maxTileSize
+  tileSize = Math.min(tileSize, maxTileSize);
+
+  return tileSize;
 }
 
 /**
@@ -177,35 +344,6 @@ async function ensureDirectory(source, targetPath) {
   }
 }
 
-/**
- * Ensures a directory exists by creating all intermediate paths
- * Alternative implementation that creates each directory level separately
- * @async
- * @function
- * @param {string} source - The source (usually "data" for /data folder)
- * @param {string} targetPath - The full path to ensure exists
- */
-async function ensureDirectory4(source, targetPath) {
-  try {
-    await FilePicker.browse(source, targetPath);
-  } catch (e) {
-    ui.notifications.info(i18n("QUICKSCENETILER.notification.creatingDirectory", { path: targetPath }));
-    
-    // Split path and create each level
-    const pathParts = targetPath.split("/");
-    let currentPath = "";
-    
-    for (const part of pathParts) {
-      currentPath = currentPath ? `${currentPath}/${part}` : part;
-      try {
-        await FilePicker.browse(source, currentPath);
-      } catch {
-        await FilePicker.createDirectory(source, currentPath);
-      }
-    }
-  }
-}
-
 // ============================================================================
 // EXPORT DIALOG
 // ============================================================================
@@ -240,7 +378,7 @@ function openExportDialog() {
   const defaultSubfolder = slugify(scene.name);
   const webPSupported    = browserSupportsWebPExport();
   let lockTiles          = defaults.lockTiles;
-  
+  let symmetricTiling    = defaults.symmetricTiling;
 
   let radioPNG = "checked"
   let radioWEBP = ""
@@ -294,6 +432,15 @@ function openExportDialog() {
         </div>
 
         <div class="form-group">
+          <label>${game.i18n.localize("QUICKSCENETILER.export.symmetricTiling.label")}</label>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" name="symmetricTiling" ${symmetricTiling ? "checked" : ""}/>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
           <label>${game.i18n.localize("QUICKSCENETILER.export.elevation.label")}</label>
           <div class="spinner-group">
             <button type="button" data-action="dec" data-target="elevation">−</button>
@@ -302,18 +449,17 @@ function openExportDialog() {
           </div>
         </div>
 
-<div class="filepicker-group">
-
-  <div class="filepicker-row">
-    <label>${game.i18n.localize("QUICKSCENETILER.export.basePath.label")}</label>
-    <button type="button" data-action="browseBase" title="${game.i18n.localize("QUICKSCENETILER.export.button.browse")}" class="browse-btn">
-      <i class="fas fa-folder-open"></i>
-    </button>
-  </div>
-  <div class="basepath-row">
-    <input type="text" name="basePath" value="${defaultBasePath}"/>
-  </div>
-</div>
+        <div class="filepicker-group">
+          <div class="filepicker-row">
+            <label>${game.i18n.localize("QUICKSCENETILER.export.basePath.label")}</label>
+            <button type="button" data-action="browseBase" title="${game.i18n.localize("QUICKSCENETILER.export.button.browse")}" class="browse-btn">
+              <i class="fas fa-folder-open"></i>
+            </button>
+          </div>
+          <div class="basepath-row">
+            <input type="text" name="basePath" value="${defaultBasePath}"/>
+          </div>
+        </div>
 
         <div class="form-group">
           <label>${game.i18n.localize("QUICKSCENETILER.export.subfolder.label")}</label>
@@ -336,16 +482,18 @@ function openExportDialog() {
         label: game.i18n.localize("QUICKSCENETILER.export.button.start"),
         callback: async (html) => {
           const tileFormat = html.find('[name="tileFormat"]:checked').val() || "png";
-          const tileW      = parseInt(html.find('[name="tileW"]').val(), 10);
-          const tileH      = parseInt(html.find('[name="tileH"]').val(), 10);
+          let tileW        = parseInt(html.find('[name="tileW"]').val(), 10);
+          let tileH        = parseInt(html.find('[name="tileH"]').val(), 10);
           const elevation  = parseInt(html.find('[name="elevation"]').val(), 10) || 0;
           const basePath   = html.find('[name="basePath"]').val().trim();
           const subfolder  = html.find('[name="subfolder"]').val().trim();
+          symmetricTiling  = html.find('[name="symmetricTiling"]').is(":checked");
 
           if (tileFormat === "webp" && !browserSupportsWebPExport()) {
             ui.notifications.error(game.i18n.localize("QUICKSCENETILER.notification.webpUnsupported"));
             return;
           }
+
           if (!tileW || !tileH || tileW <= 0 || tileH <= 0) {
             ui.notifications.error(game.i18n.localize("QUICKSCENETILER.notification.tileSize"));
             return;
@@ -360,9 +508,7 @@ function openExportDialog() {
           }
 
           const targetPath = `${basePath.replace(/\/+$/, "")}/${subfolder.replace(/^\/+/, "")}`;
-          // Execute export and close dialog when complete
-          await exportSceneToTiles(canvas.scene, bgSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat);
-          // Close the dialog after export completes
+          await exportSceneToTiles(canvas.scene, bgSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat, symmetricTiling);
           dialog.close();
         }
       },
@@ -612,7 +758,7 @@ function openExportDialog() {
  * @param {string} tileFormat - Image format: "png" or "webp"
  * @throws {Error} Caught and displayed as notification
  */
-async function exportSceneToTiles(sourceScene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat) {
+async function exportSceneToTiles(sourceScene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat, symmetricTiling = true) {
   try {
     ui.notifications.info(game.i18n.localize("QUICKSCENETILER.notification.duplicating"));
     const newScene = await duplicateSceneWithTilesName(sourceScene);
@@ -622,13 +768,13 @@ async function exportSceneToTiles(sourceScene, imageSrc, tileW, tileH, elevation
     ui.notifications.info(i18n("QUICKSCENETILER.notification.activating", { sceneName: newScene.name }));
 
     const { tiles, meta } = await tileBackgroundOnScene(
-      newScene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat
+      newScene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles, tileFormat, symmetricTiling
     );
 
-    
     meta.lockTiles = lockTiles;
     meta.elevation = elevation;
     meta.tileFormat = tileFormat;
+    meta.symmetricTiling = symmetricTiling;
 
     await saveSceneMetaJson(newScene, tiles, meta, targetPath);
 
@@ -679,7 +825,7 @@ async function duplicateSceneWithTilesName(scene) {
 // ============================================================================
 // Split background into tiles, upload, create tile documents in scene
 // ============================================================================
-async function tileBackgroundOnScene(scene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles = false, tileFormat = "png") {
+async function tileBackgroundOnScene(scene, imageSrc, tileW, tileH, elevation, targetPath, lockTiles = false, tileFormat = "png", symmetricTiling = true) {
   ui.notifications.info(game.i18n.localize("QUICKSCENETILER.notification.loading"));
 
   const img  = await loadImage(imageSrc);
@@ -687,12 +833,18 @@ async function tileBackgroundOnScene(scene, imageSrc, tileW, tileH, elevation, t
   const imgH = img.height;
 
   if (!imgW || !imgH) {
-    throw new Error(game.i18n.localize(QUICKSCENETILER.notification.noImage)); 
+    throw new Error(game.i18n.localize("QUICKSCENETILER.notification.noImage")); 
   }
   
   const bg      = scene.background ?? {};
   const scaleX  = bg.scaleX ?? 1;
   const scaleY  = bg.scaleY ?? 1;
+
+  // Create symmetric tiles if enabled
+  if (symmetricTiling) {
+    tileW = computeTileAxisDim(imgW, tileW);
+    tileH = computeTileAxisDim(imgH, tileH);
+  }
 
   // Calculate scene padding and background offset
   // This ensures tiles are placed at the exact same world coordinates as the original background
@@ -931,9 +1083,10 @@ async function importSceneFromTiles(folderPath, newSceneName, lockTilesOverride 
     width:   meta.scene?.width   ?? meta.image?.width  ?? 4096,
     height:  meta.scene?.height  ?? meta.image?.height ?? 4096,
     padding: meta.scene?.padding ?? 0,
-    grid: CONST.GRID_TYPES.GRIDLESS // TODO: Check if this makes still sense Gridless for pixel-perfect placement
   };
  
+  //grid: CONST.GRID_TYPES.GRIDLESS // TODO: Check if this makes still sense Gridless for pixel-perfect placement
+
   let newScene;
   try {
     newScene = await Scene.create(sceneData);

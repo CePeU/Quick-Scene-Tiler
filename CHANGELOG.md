@@ -1,3 +1,15 @@
+## [1.0.1] / 2026-05-04
+### Added
+- symetric tiling option (allows to tile the canvas in equal sized tiles)
+- dark/light theme support for control tile menu
+
+### Fixed
+- v12 and v13 should now be supported in the control tile menu by dfreds UI extender module
+### Changed
+### Removed
+### Deprecated
+### Security
+
 ## [1.0.0] / 2026-04-21
 ### Added
 - First fairly stable release

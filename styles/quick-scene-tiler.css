@@ -1,11 +1,32 @@
-  .quick-scene-tiler-icon {
-    
-  background-image: url(scenetiler.svg);
+/* v12: the icon lives in an <i> */
+i.quick-scene-tiler-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
 
-    /*width: 2em;*/
-    /*height: 2em;*/
-    /*vertical-align: -0.125em;*/
-  }
+  /* Use mask so we don’t fight background‑reset rules */
+  mask: url("scenetiler_dark.svg") no-repeat center;
+  -webkit-mask: url("scenetiler_dark.svg") no-repeat center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+
+  /* Ensure the icon inherits the toolbar’s text color */
+  background-color: currentColor;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* v13: class is now on a button; */
+.theme-light li button.quick-scene-tiler-icon {
+    background: var(--control-bg-color) url("scenetiler_light.svg") no-repeat center;
+    border: 1px solid var(--toggle-border-color);
+}
+
+.theme-dark li button.quick-scene-tiler-icon {
+    background: var(--control-bg-color) url("scenetiler_dark.svg") no-repeat center;
+    border: 1px solid var(--toggle-border-color);
+}
+
      /* Main Window*/
      .tile-macro-btn-row {
         display: flex;

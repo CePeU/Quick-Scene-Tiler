@@ -21,6 +21,7 @@
   "QUICKSCENETILER.export.button.start": "Start Export",
   "QUICKSCENETILER.export.button.cancel": "Cancel",
   "QUICKSCENETILER.export.button.browse": "Select Folder",
+  "QUICKSCENETILER.export.symmetricTiling.label": "Enable symetric Tiling",
 
   "QUICKSCENETILER.import.title": "Import: Reconstruct Tiles & Walls from Folder",
   "QUICKSCENETILER.import.folder.label": "Folder under",
@@ -87,6 +88,9 @@
   "QUICKSCENETILER.settings.basePath.hint": "Default folder path under /data for tile storage (e.g., assets/scenetiles)",
 
   "QUICKSCENETILER.settings.lockTiles.name": "Lock Tiles by Default",
-  "QUICKSCENETILER.settings.lockTiles.hint": "Should tiles be locked by default during export?"
+  "QUICKSCENETILER.settings.lockTiles.hint": "Should tiles be locked by default during export?",
+
+  "QUICKSCENETILER.settings.symmetricTiling.name": "Enable symetric tiling",
+  "QUICKSCENETILER.settings.symmetricTiling.hint": "Enables symetric tiling. This will create equal sized tiles "
 
 }
