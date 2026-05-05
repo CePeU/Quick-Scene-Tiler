@@ -1,4 +1,4 @@
-![[]](https://img.shields.io/github/downloads/CePeU/Quick-Journal-Page-Sort/latest/quick-scene-tiler.zip)
+![Downloads](https://img.shields.io/github/downloads/CePeU/Quick-Journal-Page-Sort/latest/quick-scene-tiler.zip)
 
 A little module to cut a Foundry VTT scene into tiles and replace the scene map with those tiles.   
 This allows even older tabletts to view high resolution maps which would otherwise be inaccessible due to the fact that they will exceed the texture size of the tablett. You will find a new button in the tiles layer controls.
